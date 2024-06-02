@@ -7,7 +7,8 @@ function App() {
   const [count, setCount] = useState([]);
   const [error, seterror] = useState(false);
   const [loading, setloading] = useState(false);
-  const [search,setsearch]=useState("")
+  const [search,setsearch]=useState("");
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(()=>{
     const controller=new AbortController();
@@ -15,7 +16,7 @@ function App() {
       try {
         setloading(true)
         seterror(false)
-        const response=await axios.get("/api/product?search"+search,{
+        const response=await axios.get(`${apiUrl}/api/product?search=${search}`,{
           signal:controller.signal
         })
         console.log(response.data)

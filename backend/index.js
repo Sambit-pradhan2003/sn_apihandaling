@@ -2,6 +2,11 @@ import express from "express";
 
 
 const app=express();
+app.use(cors({
+  origin: 'https://your-netlify-domain.netlify.app',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
 
 app.get('/api/product',(req,res)=>{
     const product=[
