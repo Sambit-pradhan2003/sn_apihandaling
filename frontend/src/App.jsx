@@ -8,7 +8,7 @@ function App() {
   const [error, seterror] = useState(false);
   const [loading, setloading] = useState(false);
   const [search,setsearch]=useState("");
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://sn-apihandaling.onrender.com';
 
   useEffect(()=>{
     const controller=new AbortController();
