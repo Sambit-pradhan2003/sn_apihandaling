@@ -4,13 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   server:{
-    proxy: {
-      '/api': {
-        target: 'https://sn-apihandaling.onrender.com',
-        changeOrigin: true,
-        secure: false,
-        rewrite: path => path.replace(/^\/api/, '')
-      }
+    proxy:{
+      "/api":"https://sn-apihandaling.onrender.com"
     }
   },
   plugins: [react()],

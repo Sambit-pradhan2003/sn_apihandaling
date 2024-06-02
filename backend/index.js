@@ -1,13 +1,25 @@
 import express from "express";
+
+
 import cors from 'cors';
 
+const app = express();
 
-const app=express();
+const allowedOrigins = ['https://snapi28.netlify.app', 'http://localhost:5173']; // Add other allowed origins here
+
 app.use(cors({
-  origin: 'https://your-netlify-domain.netlify.app',
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
+
+
 
 app.get('/api/product',(req,res)=>{
     const product=[
